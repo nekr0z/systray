@@ -1,5 +1,7 @@
 systray is a cross-platform Go library to place an icon and menu in the notification area.
 
+This fork uses Ayatana fork of indicators on Linux.
+
 ## Features
 
 * Supported on Windows, macOS, and Linux
