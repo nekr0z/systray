@@ -1,4 +1,4 @@
-module github.com/nekr0z/systray
+module gitlab.lan.olfeo.com/mgardent-ext/systray
 
 go 1.13
 
