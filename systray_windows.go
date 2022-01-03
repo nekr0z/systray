@@ -1,3 +1,4 @@
+//go:build windows
 // +build windows
 
 package systray
@@ -215,8 +216,6 @@ func (t *winTray) setIcon(src string) error {
 		return err
 	}
 
-	t.muNID.Lock()
-	defer t.muNID.Unlock()
 	t.nid.Icon = h
 	t.nid.Flags |= NIF_ICON
 	t.nid.Size = uint32(unsafe.Sizeof(*t.nid))
@@ -302,6 +301,10 @@ func (t *winTray) wndProc(hWnd windows.Handle, message uint32, wParam, lParam ui
 }
 
 func (t *winTray) initInstance() error {
+
+	t.muNID.Lock()
+	defer t.muNID.Unlock()
+
 	const IDI_APPLICATION = 32512
 	const IDC_ARROW = 32512 // Standard arrow
 	// https://msdn.microsoft.com/en-us/library/windows/desktop/ms633548(v=vs.85).aspx
@@ -420,8 +423,6 @@ func (t *winTray) initInstance() error {
 		uintptr(t.window),
 	)
 
-	t.muNID.Lock()
-	defer t.muNID.Unlock()
 	t.nid = &notifyIconData{
 		Wnd:             windows.Handle(t.window),
 		ID:              100,
