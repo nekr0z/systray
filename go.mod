@@ -1,4 +1,4 @@
-module gitlab.lan.olfeo.com/mgardent-ext/systray
+module github.com/marcgardent/systray
 
 go 1.13
 
