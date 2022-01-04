@@ -215,7 +215,9 @@ func (t *winTray) setIcon(src string) error {
 	if err != nil {
 		return err
 	}
-
+	
+	t.muNID.Lock()
+	defer t.muNID.Unlock()
 	t.nid.Icon = h
 	t.nid.Flags |= NIF_ICON
 	t.nid.Size = uint32(unsafe.Sizeof(*t.nid))
