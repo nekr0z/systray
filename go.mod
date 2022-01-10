@@ -1,4 +1,5 @@
-module github.com/marcgardent/systray
+module github.com/nekr0z/systray
+
 
 go 1.13
 
